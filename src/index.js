@@ -1,17 +1,54 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createStore, applyMiddleware, compose } from 'redux';
+import { Provider } from 'react-redux';
+import { Router, Switch, Route, Redirect } from 'react-router-dom';
+import { render } from 'react-dom';
+import thunk from 'redux-thunk';
+import logger from 'redux-logger';
+import history from './history';
+import Root from './components/Root';
+import AccountDragons from './components/AccountDragons';
+import PublicDragons from './components/PublicDragons';
+import rootReducer from './reducers/index.js';
+import { fetchAuthentiated } from './actions/account';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+
+
+
+const store = createStore(
+  rootReducer,
+  compose(
+    applyMiddleware(thunk, logger),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  )
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+
+
+const AuthRoute = (props) => {
+  if (!store.getState().account.loggedIn) {
+    return <Redirect to={{ pathname: '/' }} />
+  } else {
+    const { component, path } = props;
+    return <Route path={path} component={component} />
+  }
+}
+
+
+store.dispatch(fetchAuthentiated())
+  .then(() => {
+    render(
+      <Provider store={store}>
+        <Router history={history} >
+          <Switch>
+            <Route exact path='/' component={Root} />
+            <AuthRoute path="/account-dragons" component={AccountDragons} />
+            <AuthRoute path="/public-dragons" component={PublicDragons} />
+          </Switch>
+        </Router>
+      </Provider>,
+      document.getElementById('root')
+    );
+  });
+
