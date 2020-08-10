@@ -1,68 +1,53 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+{DragonStack}
+{A game to collect and breed dragons.}, {5/11/2020}
+By {Chris Underwood}
+Description
+\*{A game to collect and breed dragons. This is a fullstack JavaScript application. The front end consists of a signup/sign page, a home page that shows the current generation and account information, an Account Dragons page that lists all of the dragons owned by the logged in account, and Public dragons that are available for purchase or mating. The backend consists of relational database that store all of the dragon and account informtion. Communication is provided to the front end via 3 routes that 13 different apis total.
 
-## Available Scripts
+Dragons have an id, nickname, generation, background color, pattern, build, size, saleValue, sireValue,and isPublic values. There is a dragon avatar based on the physical attributes.
 
-In the project directory, you can run:
+User accounts have dragons, cash balance, and Username. Each user can generate one dragon per generation.
 
-### `npm start`
+Authenticattion is done with session cookies which have an experation date but can be stored on multiple devices and are persistent through refreshes. The session cookied are also used as the authentication on selected APIs.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+}\_
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Setup/Installation Requirements
+\_Make sure you have Node.js installed globally
+\_Clone or fork the files to a file location of your choice
+\_Go to the folder/location of the download or where you have moved the files
+\_On your terminal go to backend.
+\_Run npm i
+\_At the root of backend create a folder called secrets with 2 files: databaseConfiguration.js and index.js
+\_In databaseConfiguration.js export and object with user, host, database, password, and port based on the pg npm module.
+\_In index.js create an app_secret and export it.
+\_At the terminal type npm run dev to start the backend server.
+\_In your web browser, navigate to localhost:3000/dragon/new to see if the server is running.
+\_On a new terminal instance, navigate to frontend
+\_Run npm i
+\_In the src folder, create a config.js file with an object backend with and an address property with the url to the backend.
+\_On the terminal run npm run dev to start the front end server.
+\_Navigate to localhost:1234 to see if the frontend is live
+{Leave nothing to chance! You want it to be easy for potential users, employers and collaborators to run your app. Do I need to run a server? How should I set up my databases? Is there other code this app depends on?}
 
-### `npm test`
+Known Bugs
+{ The application works as intended but there are lots of places for improvement. For example the user accounts are not tied to email. The application is not realtime so it is possible one user can purchase a dragon and another still thinks it is available. }
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Support and contact details
+{ cunderwoodmn (at) gmail [dot] com}
 
-### `npm run build`
+Technologies Used
+{React.js, Node.js, Express.js, redux, react-router, redux-thunk, redux-logger, regenerator-runtime, history, base-64, body-parser, cookie-parser, cors, crypto-js, nodemon, pg, uuid }
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+License
+\*{MIT License
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Copyright (c) [2020][chris underwood]
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-### `npm run eject`
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.}\*
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Copyright (c) 2020 {Chris Underwood}
